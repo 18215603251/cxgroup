@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>加入我们</title>
+	<script src="//cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="//cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+	<script	src="//cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<style type="text/css">
+		.row2 img{
+			width:100%;
+			height:227px;
+		}
+		
+		#listNav {
+			line-height:3em;
+			font-size:1.5em;
+		}
+		.glyphicon-play {
+			font-size:0.5em;
+		}
+		
+		p {
+			color: #0088A8
+		}	
+		#listContent {
+			margin-left:-40px;
+		}
+		
+	</style>
+</head>
+<body class="bg-warning">
+	
+	<!-- 引入头部内容 -->
+	<div id="merge" class="container"></div>
+	
+	<div class="container"><hr/></div>
+	
+	<!-- 第二行, 轮播图 -->
+	<div class="container">
+		<div class="row row2">
+			<div id="myCarousel" class="carousel slide" data-interval="3000" data-ride="carousel">
+				<ol class="carousel-indicators">
+					<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+					<li data-target="#myCarousel" data-slide-to="1"></li>
+				</ol>
+				<div class="carousel-inner">
+					<div class="item active">
+						<img src="/image/about1.jpg" alt="First slide">
+					</div>
+					<div class="item">
+						<img src="/image/about2.jpg" alt="Second slide">
+					</div>
+				</div>
+				<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev"> 
+					<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					<span class="sr-only">Previous</span>
+				</a> 
+				<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next"> 
+					<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					<span class="sr-only">Next</span>
+				</a>
+			</div>
+		</div>	
+	</div>
+	
+	<div class="container"><hr/></div>
+	
+	<!-- 第三行, 位置 -->
+	<div class="container">
+		<span>首页&nbsp;|&nbsp; 加入我们&nbsp;|&nbsp; </span>
+		<span id="activeitem" style="color:red;"></span>
+	</div>
+	
+	<div class="container"><hr/></div>
+	
+	<!-- 第四行, 主要内容 -->
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-4 col-xs-4 col-md-4 col-lg-4">
+				<ul id="listNav" class="list-unstyled">
+					<!-- 添加内容 -->
+				</ul>
+			</div>
+			<div class="row col-sm-8 col-xs-8 col-md-8 col-lg-8" id="listContent">
+				<!-- 添加内容 -->
+			</div>
+		</div>
+	</div>
+	
+	<!-- 引入尾部内容 -->
+	<div id="footer" class="container"></div>
+	
+	<script type="text/javascript">
+		
+		// 加载头部和尾部
+		$(function(){
+			$("#merge").load("head.html");
+			$("#footer").load("foot.html");
+		});
+		
+		// 请求获取列表
+		$.get("/getJoinList", function(data){
+			$.each(data, function(index, element){
+				
+				/*如果url的值是many, 则变为下拉菜单*/
+				if (element.url == "many") {
+					// 创建li标签	
+					var down_li = $("<li class='dropdown'></li>");
+					// button标签
+					var button = $("<button class='dropdown-toggle btn btn-link' data-toggle='dropdown'></button>");
+					$(button).html(element.name);
+					// 创建 b标签
+					var b = $("<b class='caret'></b>");
+					// 向a标签中加入b标签
+					$(button).append(b);
+					// 将button标签加入li标签
+					$(down_li).append(button);
+						// 创建ul标签(下拉项)
+						var ul = $("<ul class='dropdown-menu'></ul>");
+						/**** 创建下拉项中具体的li(根据后台数据确定是多少个)****/
+						$.ajax({
+							url:"getPostList",
+							success: function(da){
+								/***** 循环创建li*****/
+								$.each(da, function(ind, e){
+									// 创建li
+									var into_li = $("<li></li>");
+									// 创建a
+									var into_a = $("<a href class='many'></a>");
+									$(into_a).html(e.name).attr("data_id", e.id);
+									// 将a标签加入li中
+									$(into_li).append(into_a);
+									// 循环时将多个li加入到ul中
+									$(ul).append(into_li);
+								});
+							}
+						});
+					/*******循环完成后将ul加入外层li******/
+					$(down_li).append(ul).addClass("sub");	// addClass("sub")作为标记, 表示它有子元素, 即为下拉菜单
+					$("#listNav").append(down_li);
+				} else {
+					// 创建li元素
+					var outer_li = $("<li></li>");
+					var outer_button = $("<button class='btn btn-link btn-once'></button>");
+					$(outer_button).html(element.name).attr("data_url", element.url);
+					$(outer_li).append(outer_button);
+					// 添加li到ul中
+					$("#listNav").append(outer_li);
+				}
+			});
+			
+			// 渲染后, 默认显示项
+			$("#listContent").load(data[0].url);
+			$("#activeitem").html(data[0].name);
+		});
+		
+		
+		// 给非下拉按钮添加事件
+		$("#listNav").on("click",".btn-once",function(e){
+			// 获取url属性的值
+			var url = $(this).attr("data_url");
+			// 根据url属性的值加载进页面
+			$("#listContent").load(url);
+			// 位置
+			$("#activeitem").html($(this).html());
+	    });
+		
+		// 给下拉菜单绑定事件
+		$("#listNav").on("click", ".many", function(e){
+			var id = $(this).attr("data_id");
+			e.preventDefault();
+			$("#listContent").empty();
+			// 根据id查询到关联的招聘信息
+			$.ajax({
+				url:"/getRelativePostList",
+				data:{fid:id},
+				success:function(d){
+					$.each(d, function(i, el){
+						var div = $("<div></div>");
+						var name = el.name;
+						if (name != null) {
+							$(div).append("职位: " + name).append("</br>");
+						}
+						var count = el.count;
+						if (count != null) {
+							$(div).append("人数: " + count).append("</br");
+						}
+						var address = el.address;
+						if (address != null) {
+							$(div).append("地址: " + address).append("</br");
+						}
+						var salary = el.salary;
+						if (salary != null) {
+							$(div).append("薪资: " + salary).append("</br");
+						}
+						var requirement = el.requirement;
+						if (requirement != null) {
+							$(div).append("要求: " + requirement).append("</br");
+						}
+						
+						$("#listContent").append(div);
+					});
+				}
+			});
+		});
+	</script>
+</body>
+</html>

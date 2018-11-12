@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>诚信集团</title>
+	
+	<script src="//cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="//cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+	<script	src="//cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="css/index.css"/>
+	
+	<style>
+		.row2 .carousel-inner img {
+			height:350px;
+			width:100%;
+		}
+		.row3 div img {
+			margin-right:12px;
+			margin-bottom:12px;
+		}
+		.row3 {
+			padding-left:8px;
+		}
+		.row4 {
+			padding-left:8px;
+			padding-bottom:8px;
+		}
+		.row4 > h2 {
+			margin-bottom:12px;
+		}
+		.row4 img {
+			margin-left:-28px;
+		}
+		.row4 .active-news {
+			margin-left:-15px;
+		}
+		.row4 .active-news button {
+			margin-top:10px
+		}
+		.row4 ul li span {
+			float:right
+		}
+		.row5 {
+			padding-left:8px;
+			padding-right:8px;
+			padding-bottom:8px;
+		}
+		.row5 > h2 {
+			margin-bottom:20px;
+		}
+		.row5 img {
+			width:100%;
+			height:170px;
+		}
+	</style>
+</head>
+<body style="background-color:#c0c0c0">
+
+	<!-- 包含整个页面的全部内容 -->
+	<div class="container">
+		
+		<!-- 第一行 -->
+		<div class="row row1" style="margin-top:8px;">
+			<!-- 引入头部内容 -->
+			<div id="merge" class="container"></div>
+		</div>
+
+		<hr/>
+
+		<!-- 第二行 -->
+		<div class="row row2">
+			<!-- 轮播图 -->
+			<div id="myCarousel" class="carousel slide" data-interval="3000" data-ride="carousel">
+				<ol class="carousel-indicators">
+					<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+					<li data-target="#myCarousel" data-slide-to="1"></li>
+					<li data-target="#myCarousel" data-slide-to="2"></li>
+				</ol>
+				
+				<div class="carousel-inner">
+					<div class="item active">
+						<img src="/image/1.jpg" alt="First slide">
+					</div>
+					<div class="item">
+						<img src="/image/2.jpg" alt="Second slide">
+					</div>
+					<div class="item">
+						<img src="/image/3.jpg" alt="Third slide">
+					</div>
+				</div>
+				
+				<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev"> 
+					<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					<span class="sr-only">Previous</span>
+				</a> 
+				<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next"> 
+					<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					<span class="sr-only">Next</span>
+				</a>
+			</div>			
+		</div>
+		
+		<hr/>
+		
+		<!-- 第三行 -->
+		<div class="row row3 bg-success">
+			<h2>集团简介</h2>
+			<div class="row">
+				<div class="col-sm-8 col-xs-8 col-md-8 col-lg-8">
+					<h4>"天道诚信、厚德载业、诚信天下"</h4>
+					<p>
+							诚信投资控股集团有限公司是一家川、京、沪、新，业务涵盖地产开发、工程建设、酒店餐饮、互联网、汽
+						车贸	易、广告文化传播等产业的多元化企业集团。集团始建于1995年，在市场经济的洗礼中经过有效整合形成了
+						比较	合理的产业布局。集团总部位于四川省成都市致民东路1号，注册资金3.5亿元，在北京、上海、新疆设有分
+						公司	，现有员工2000余人。面向全国市场提供服务，具有强大的经济实力和广泛的社会影响力。集团实施董事会
+						领导	下的总经理负责制，下设行政部、财务部、审计部、物资部，旗下拥有四川诚信金宇建筑集团有限公司、成
+						都合	江亭禅茶有限责任公司、成都盛世阳光广告文化传播有限公司、成都诚信宗达实业有限公司、……
+					</p>
+					<button data-toggle="collapse" data-target="#collapseOne" class="btn btn-warning pull-right">更多 / 收起</button>
+					<div id="collapseOne" class="collapse">
+	           			四川诚信金宇汽车贸易有限公司、北京模网信息科技有限公司、诚信食府、四川诚信盛世装饰工程有限公司、四川盛世阳光园林绿化工程有限公司、
+	           			成都诚信宗达房地产代理有限公司、诚信投资控股集团有限公司上海分公司、诚信投资控股集团有限公司上海分公司、多家全资公司。另投资、参股多家上市公司。
+					       诚信投资控股集团有限公司具有房地产开发二级、房屋建筑工程施工总承包二级、市政公用工程施工总承包二级、建筑装饰装修工程专业承包二级、
+						地基与煤矿工程专业承包二级、城市园林绿化企业标准三级等企业资质。
+      					近年来，除承建建筑工程160多万平米、开发及代理销售房产140多万平米外，还拥有闹市区的地产30多亩，自有建筑面积6万多平米。正在启
+						动的两大工程也将投入10多亿资金。主要业绩 1994-2006年   承接各类工业、商业及民用建筑工程达100余万平方米；
+      					2001-2006年   代理销售"双楠顺富苑"、"西财骏苑"、"金河名居"、"南港都市"、"粼江府邸"、"新景观"、"万兴苑"等10多个商业楼盘，面积达60多万平方米。
+      					2003-2006年   完成了"西区医院"、"航利大厦"、"新鸿路综合楼"、"南瓜桥酒家"、"诚信酒家"、"诚信食府"等约50万平方米的装饰装修工程。
+      					2005-2006年   完成了"太平盛世"一、二期项目。
+      					2006年   与四川大学华西医院签订了华西永宁分院、三圣乡分院的两个BT建设项目，总投资约7亿万元人民币。
+     					2007年  投资开发占地约80亩的"紫东芯座"项目，建筑面积25万平方米，销售额15亿元。
+      					2008-2010年   郫县"蜀源盛世"开发项目，占地191亩，建筑面积13万平方米，总投资3.2亿万元
+      					2010-2014年   开发修建诚信食府“诚信河畔”三期工程。
+						诚信房地产、建筑业坚持“诚信服务”的经营理念，“质量兴业”的发展道路，“保证质量、合理工期、信守合同、用户至上”的经营宗旨，“为用户提供优良工程和满意服务”的承诺，风雨兼程数年。
+						经过创业、发展、逐步壮大的历程，如今步入了现代化、规范化企业运作的发展道路，获得了成都市住宅与房地产业颁发的“AAA级诚信企业”荣誉称号，为公司的进一步发展增强了后劲。
+						诚信胡私家宅院、诚信胡私家驿站、诚信胡私家酒窖、诚信胡私家酒庄、诚信胡私家旅店、诚信胡商务酒店、诚信胡幸福人家酒店、诚信胡产品销售中心、诚信食府、诚信酒家、水井坊酒文化保护区九眼桥酒吧一条街。
+						既是经营实体，也是集团服务社会并保持社会和谐关系的平台。在这里，三国文化、川西文化、佛教文化、生态文化、商业文化，都奇妙地揉合在一起，为追求高尚生活、关爱健康的人们提供优良的产品、优质的服务。
+						欢迎长期合作的老朋友和寻求合作发展的新朋友前来诚信食府，探寻商机、搭载金桥、铺建人脉，让你的事业发展更上一层楼。
+        			</div>
+				</div>
+				<div class="col-sm-4 col-xs-4 col-md-4 col-lg-4">
+					<img alt="" class="pull-right" src="image/jianjie.jpg">
+				</div>
+			</div>
+		</div>
+		
+		<hr>
+		
+		<!-- 第四行 -->
+		<div class="row row4 bg-danger">
+			<h2>集团新闻</h2>
+			<div class="col-sm-6 col-xs-6 col-md-6 col-lg-6">
+				<div class="col-sm-4 col-xs-4 col-md-4 col-lg-4">
+					<img alt="" src="image/jituannews.png" style="width:100%; height:200px" />
+				</div>
+				<div class="col-sm-8 col-xs-8 col-md-8 col-lg-8 active-news">
+					<p>
+						活动主题：相约诚信食府，感受三国文化，古蜀文化，和禅文化的精髓，共同举杯狂欢世界杯。<br>
+			       		 活动地点：诚信食府（餐吧露天花园、诚信酒吧 ）
+					</p>
+					<button data-toggle="collapse" data-target="#news" class="btn btn-warning pull-right">查看 / 收起</button>
+					<div id="news" class="collapse"> 
+						活动时间：2014年6月13日至7月14日 <br/>
+						活动内容：花园餐吧LED大屏幕实况播放足球比赛，喝啤酒，品港式夜宵，各种凉卤干锅，海鲜烧烤，美味小吃等。<br/>
+						活动一：凡当天在食府餐吧、酒吧消费均可参与球队最后比分的竞猜，凡猜对者均可获赠诚信胡红葡萄酒50年树龄一瓶（售价288元）次日领取。<br/>
+						活动二：凡当天在食府餐吧、酒吧消费均可参与球队竞猜，凡猜对者均可获赠雪花勇闯啤酒一瓶、次日领取。<br/>
+						活动三：凡当天在食府餐吧、酒吧消费凭收银票均可享受诚信沐足、中医理疗基础项目五折优惠。	
+	           		</div>
+				</div>
+			</div>
+			
+			<div class="col-sm-6 col-xs-6 col-md-6 col-lg-6">
+				<div class="dynamic-up">
+					<span>集团动态</span>
+					<a href="#" class="pull-right">更多>></a>
+				</div>
+				<hr/>
+				<div class="dynamic-down">
+					<ul class="list-unstyled">
+						<li><a href="#">喝红酒对高血脂人的好处</a><span>[14-07-25]</span></li>
+						<li><a href="#">喝红酒对癌症病人的帮助</a><span>[14-07-25]</span></li>
+						<li><a href="#">答谢诚信食府老客户的最新优惠活动</a><span>[14-07-25]</span></li>
+						<li><a href="#">集团四月份优秀员工表彰大会</a><span>[14-07-25]</span></li>
+						<li><a href="#">2014年世界杯</a><span>[14-07-25]</span></li>
+						<li><a href="#">庆六一端午</a><span>[14-07-25]</span></li>
+						<li><a href="#">Tizen试用总结:界面与Android</a><span>[14-07-25]</span></li>
+						<li><a href="#">Android将长年扫描后台恶意应用</a><span>[14-07-25]</span></li>
+						<li><a href="#">诺基亚前CEO接管微软硬件部门</a><span>[14-07-25]</span></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+		<hr/>
+		
+		<!-- 第五行 -->
+		<div class="row row5 bg-primary">
+			<h2>集团产业</h2>
+			<div class="row">
+				<div class="col-sm-3 col-xs-3 col-md-3 col-lg-3">
+					<div>
+						<a href="#" class="thumbnail">
+							<img alt="" src="image/product1.png">
+						</a>
+					</div>
+					
+					<h4>诚信胡餐饮娱乐版块</h4>
+					<hr/>
+					<div>
+						<p>
+							诚信胡私家宅院、诚信胡私家酒窖、私家酒庄、诚信食府、诚信...
+						</p>
+					</div>
+				</div>
+				<div class="col-sm-3 col-xs-3 col-md-3 col-lg-3">
+					<div>
+						<a href="#" class="thumbnail">
+							<img alt="" src="image/product2.png">
+						</a>
+					</div>
+					<h4>诚信宗达实业板块</h4>
+					<hr/>
+					<p>
+						诚信胡私家宅院、诚信胡私家酒窖、私家酒庄、诚信食府、诚信...
+					</p>
+				</div>
+				<div class="col-sm-3 col-xs-3 col-md-3 col-lg-3">
+					<div>
+						<a href="#" class="thumbnail">
+							<img alt="" src="image/product3.png">
+						</a>
+					</div>
+					<h4>房地产开发版块</h4>
+					<hr/>
+					<p>
+						具有房地产开发二级, 房屋建筑工程施工总承包二级, 市政公用...
+					</p>
+				</div>
+				<div class="col-sm-3 col-xs-3 col-md-3 col-lg-3">
+					<div>
+						<a href="#" class="thumbnail">
+							<img alt="" src="image/product4.png">
+						</a>
+					</div>
+					<h4>诚信金宇建筑集团</h4>
+					<hr/>
+					<p>
+						四川诚信金宇建筑集团是诚信投资控股集团有限公司旗下的建筑...
+					</p>
+				</div>
+			</div>
+		</div>
+		
+		<hr/>
+		
+		<!-- 第六行 -->
+		<div class="row row6">
+			<!-- 引入尾部内容 -->
+			<div id="footer" class="container"></div>
+		</div>
+	</div>
+	
+	<script type="text/javascript">
+	
+		// 加载头部和尾部
+		$(function(){
+			$("#merge").load("head.html");
+			$("#footer").load("foot.html");
+		});
+	
+	</script>
+</body>
+</html>

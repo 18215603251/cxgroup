@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>荣誉证书</title>
+	<script src="//cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<link rel="stylesheet"
+		href="//cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+	<script
+		src="//cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
+	<!-- 引入分页js函数 -->
+	<script type="text/javascript" src="/myJavaScriptFunction/divide.js"></script>
+	
+	<style type="text/css">
+		.img {
+			width: 300px;
+			height: 200px;
+		}
+		
+		.h4 {
+			font-size: 1em;
+		}
+		
+		.cert_list div {
+			text-align: center;
+			margin-bottom: 30px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="col-sm-8 col-xs-8 col-md-8 col-lg-8">
+			<h4 class="text-left">荣誉证书</h4>
+			<div class="cert_list">
+				<!-- 插入内容 -->
+			</div>
+			<div class="ul">
+				<!-- 插入导航 -->
+				<p>
+					当前第 <span class="currentPage"
+						style="color: blue; font-weight: bold"></span> 页, 共 <span
+						class="totalPages" style="color: blue; font-weight: bold"></span>
+					页
+				</p>
+				<ul class="pagination nav-list">
+					<!-- 插入导航标签 -->
+				</ul>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		$(function() {
+
+			/***************调用函数,添加内容*****************/
+			divideFunction(1, 3, "/getCertDivideList");
+
+			/***************给导航标签绑定事件***************/
+			$(".nav-list").on("click", "a", function(e) {
+				var data_index = $(this).parent().attr("data_index");
+
+				console.log(data_index);
+				/*根据页码加载内容*/
+				divideFunction(data_index, 3, "/getCertDivideList");
+				e.preventDefault();
+				$(".cert_list, .nav-list, .currentPage, .totalPages").empty();
+			});
+		});
+	</script>
+</body>
+</html>

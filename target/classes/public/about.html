@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>关于集团</title>
+	<script src="//cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="//cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+	<script	src="//cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<style type="text/css">
+		.row2 img{
+			width:100%;
+			height:227px;
+		}
+		.title {
+			font-weight:bold
+		}
+		#listNav {
+			line-height:3em;
+			font-size:1.5em;
+		}
+		.glyphicon-play {
+			font-size:0.5em;
+		}
+		
+	</style>
+</head>
+<body class="bg-warning">
+	
+	<!-- 引入头部内容 -->
+	<div id="merge" class="container"></div>
+	
+	<div class="container"><hr/></div>
+	
+	<!-- 第二行, 轮播图 -->
+	<div class="container">
+		<div class="row row2">
+			<div id="myCarousel" class="carousel slide" data-interval="3000" data-ride="carousel">
+				<ol class="carousel-indicators">
+					<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+					<li data-target="#myCarousel" data-slide-to="1"></li>
+				</ol>
+				<div class="carousel-inner">
+					<div class="item active">
+						<img src="/image/about1.jpg" alt="First slide">
+					</div>
+					<div class="item">
+						<img src="/image/about2.jpg" alt="Second slide">
+					</div>
+				</div>
+				<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev"> 
+					<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					<span class="sr-only">Previous</span>
+				</a> 
+				<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next"> 
+					<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					<span class="sr-only">Next</span>
+				</a>
+			</div>
+		</div>	
+	</div>
+	
+	<div class="container"><hr/></div>
+	
+	<!-- 第三行, 位置 -->
+	<div class="container">
+		<span>首页&nbsp;|&nbsp; 关于集团&nbsp;|&nbsp; </span>
+		<span id="activeitem" style="color:red;"></span>
+	</div>
+	
+	<div class="container"><hr/></div>
+	
+	<!-- 第四行, 主要内容 -->
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-4 col-xs-4 col-md-4 col-lg-4">
+				<ul id="listNav" class="list-unstyled">
+					<!-- 添加内容 -->
+				</ul>
+			</div>
+			<div class="row col-sm-8 col-xs-8 col-md-8 col-lg-8" id="listContent">
+				<!-- 添加内容 -->
+			</div>
+		</div>
+	</div>
+	
+	<!-- 引入尾部内容 -->
+	<div id="footer" class="container"></div>
+	
+	<script type="text/javascript">
+		
+		// 加载头部和尾部
+		$(function(){
+			$("#merge").load("head.html");
+			$("#footer").load("foot.html");
+		});
+		
+		// 请求获取列表
+		$.get("/getAboutList", function(data, status){
+			$.each(data, function(index, element){
+				var li = "<li>" 
+					+ "<span class='glyphicon glyphicon-play'></span>" 
+					+ "<button class='btn btn-link btn-content' data_url="+element.url+ ">" + element.name + "</button>"
+					+ "</li>"
+				$("#listNav").append(li);
+			})
+			$("#listContent").load(data[0].url);
+			$("#activeitem").html(data[0].name);
+		});
+		
+		
+		
+		// 给按钮添加事件
+		$("#listNav").on("click",".btn-content",function(e){
+			// 获取url属性的值
+			var url = $(this).attr("data_url");
+			// 根据url属性的值加载进页面
+			$("#listContent").load(url);
+			$("#activeitem").html($(this).html());
+	    });
+		
+	</script>
+</body>
+</html>
